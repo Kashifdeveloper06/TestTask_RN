@@ -1,25 +1,24 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
-import { Icons, Images } from '../../assets';
+import { Icons } from '../../assets';
 import styles from './styles';
 import { colors } from '../../utils/colors';
-import * as Icon from 'react-native-feather';
 import Carousel from 'react-native-reanimated-carousel';
 import { useNavigation } from '@react-navigation/native'
+import StarRating from '../../components/common/StarRating';
 
 
-const ProductScreen = () => {
-
-  const width = Dimensions.get('window').width;
+const ProductScreen = ({ route }) => {
   const navigation = useNavigation();
+  const item = route.params.Data;
+  const width = Dimensions.get('window').width;
+  console.log('Product', item)
 
   return (
     <View style={styles.container}>
-
-      {/* Top Bar */}
       <View style={styles.topMenu}>
         <TouchableOpacity style={styles.backIcon}
-        onPress={() => navigation.goBack()}>
+          onPress={() => navigation.goBack()}>
           <Image source={Icons.back} style={styles.Icon} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
@@ -29,37 +28,32 @@ const ProductScreen = () => {
       </View>
 
       <ScrollView>
-
-        {/* Top Text */}
-        <Text style={{ fontSize: 50, color: 'black', lineHeight: 62, marginHorizontal: 20 }}>{`Thin  Choise `}<Text style={{ fontWeight: '800' }}>{` Top Orange`}</Text></Text>
-
-        {/* Reviews */}
+        <Text style={{ fontSize: 60, color: 'black', lineHeight: 62, marginHorizontal: 20, fontWeight: 300 }}>
+          {`${item.category}`}
+        </Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 60, color: 'black', lineHeight: 62, marginHorizontal: 20 }}>
+          {`${item.brand}`}
+        </Text>
         <View style={styles.reviews}>
-          <Icon.Star fill={'#F9B023'} />
-          <Icon.Star fill={'#F9B023'} />
-          <Icon.Star fill={'#F9B023'} />
-          <Icon.Star fill={'#F9B023'} />
-          <Icon.Star fill={'#F9B023'} />
-          <Text style={styles.iconReview}>{`110 Reviews`}</Text>
+          <StarRating rating={item.rating} />
+          <Text style={styles.iconReview}>{`${item.rating}`}</Text>
         </View>
 
-        {/* Image Sliders */}
         <View>
           <Carousel
             loop
             width={width}
             height={width / 2}
             autoPlay={true}
-            data={[...new Array(6).keys()]}
+            data={item.images}
             scrollAnimationDuration={1000}
-            // onSnapToItem={(index) => console.log('current index:', index)}
-            renderItem={({ index }) => (
+            renderItem={({ item }) => (
               <View style={styles.sliderContainer}>
                 <TouchableOpacity style={styles.favButton}>
                   <Image source={Icons.heart} style={styles.favImage} />
                 </TouchableOpacity>
                 <Image
-                  source={{ uri: 'https://img.freepik.com/free-photo/sports-car-driving-asphalt-road-night-generative-ai_188544-8052.jpg' }}
+                  source={{ uri: item }}
                   style={styles.silderImges} />
                 <Text>hello</Text>
               </View>
@@ -67,27 +61,32 @@ const ProductScreen = () => {
           />
         </View>
 
-        {/* Product Price */}
+        <View style={{ marginLeft: '5%', marginTop: 10 }}>
+          <Text style={{ fontSize: 30, fontWeight: 'bold', color: colors.App }}>{`${item.title}`}</Text>
+        </View>
         <View style={styles.priceContainer}>
-          <Text style={styles.price}>{`$34.70`}<Text style={{ fontWeight: '100' }}>{`/KG`}</Text></Text>
-          <Text style={styles.offPrice}>{`$22.04 OFF`}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={styles.price}>{`$${item.price}`}</Text>
+            <Text style={styles.offPrice}>{`${item.discountPercentage}% OFF`}</Text>
+          </View>
+          <View>
+            <Text style={styles.offPrice}>{`Stock - ${item.stock}`}</Text>
+          </View>
         </View>
 
-        {/* Buy Now Buttons */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.addtoCart}
-          onPress={() => navigation.navigate('Cart')}>
-            <Text style={styles.buttonText}>Add To Cart</Text>
+            onPress={() => navigation.navigate('Cart')}>
+            <Text style={styles.buttonText}>{'Add To Cart'}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buyNow}>
-            <Text style={[styles.buttonText, { color: 'white' }]}>Buy Now</Text>
+            <Text style={[styles.buttonText, { color: 'white' }]}>{'Buy Now'}</Text>
           </TouchableOpacity>
         </View>
 
-        {/* Product Details */}
         <View style={styles.detailConatiner}>
           <Text style={styles.detailText}>Details</Text>
-          <Text style={styles.productdetails}>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</Text>
+          <Text style={styles.productdetails}>{`${item.description}`}</Text>
         </View>
 
       </ScrollView>

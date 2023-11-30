@@ -32,7 +32,7 @@ const CartScreen = () => {
       {/* Top Bar */}
       <View style={styles.topMenu}>
         <TouchableOpacity style={styles.backIcon}
-        onPress={() => navigation.goBack()}>
+          onPress={() => navigation.goBack()}>
           <Image source={Icons.back} style={styles.Icon} />
         </TouchableOpacity>
         <Text style={styles.itemTop}>{`Shopping Cart (5)`}</Text>
@@ -49,28 +49,28 @@ const CartScreen = () => {
             renderItem={({ item, index }) => {
               return (
                 // <View>
-                  <View style={styles.flatlistContainer}>
+                <View style={styles.flatlistContainer}>
 
-                    <View style={styles.productContainer}>
-                      <Image source={item.image} style={styles.productImage} />
-                      <View style={{ marginLeft: 20 }}>
-                        <Text style={styles.productName}>{item.productName}</Text>
-                        <Text style={styles.productName}>{item.price}</Text>
-                      </View>
-                    </View>
-
-                    <View style={styles.totalProduct}>
-                      <TouchableOpacity style={styles.increment}
-                        onPress={() => decrementQuantity(item.id)}>
-                        <Text>-</Text>
-                      </TouchableOpacity>
-                      <Text style={{ paddingHorizontal: 10 }}>{item.quantity}</Text>
-                      <TouchableOpacity style={styles.increment}
-                        onPress={() => incrementQuantity(item.id)}>
-                        <Text>+</Text>
-                      </TouchableOpacity>
+                  <View style={styles.productContainer}>
+                    <Image source={item.image} style={styles.productImage} />
+                    <View style={{ marginLeft: 20 }}>
+                      <Text style={styles.productName}>{item.productName}</Text>
+                      <Text style={styles.productName}>{item.price}</Text>
                     </View>
                   </View>
+
+                  <View style={styles.totalProduct}>
+                    <TouchableOpacity style={styles.increment}
+                      onPress={() => decrementQuantity(item.id)}>
+                      <Text>-</Text>
+                    </TouchableOpacity>
+                    <Text style={{ paddingHorizontal: 10 }}>{item.quantity}</Text>
+                    <TouchableOpacity style={styles.increment}
+                      onPress={() => incrementQuantity(item.id)}>
+                      <Text>+</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
                 // <View style={{ height: 0.2, backgroundColor: '#000' }} />
                 // </View> 
               )

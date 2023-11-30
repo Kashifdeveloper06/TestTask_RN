@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     topView: {
-        backgroundColor: colors.blue
+        backgroundColor: colors.App
     },
     nameBar: {
         flexDirection: 'row',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         tintColor: 'white'
     },
     userName: {
-        color: colors.white,
+        color: colors.White,
         fontSize: 22,
         fontWeight: '600',
         lineHeight: 30.05
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'rgba(21, 38, 97, 10)',
         marginHorizontal: 17,
-        // width: 335,
         height: 56,
         borderRadius: 28,
         paddingHorizontal: 20
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     dilveryTxtTop: {
-        color: colors.grey,
+        color: colors.Grey,
         fontSize: 11,
         fontWeight: '800'
     },
@@ -62,30 +61,29 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         marginRight: 5
     },
-    bannerView: { marginVertical: 20 },
+    bannerView: {
+        marginVertical: 20
+    },
     bannerContainer: {
-        // flexDirection: 'row',
         width: 269,
         height: 123,
-        backgroundColor: colors.yellow,
+        backgroundColor: colors.Light_Yellow,
         marginLeft: 16,
-        borderRadius: 16,
-        // alignItems: 'center',
-        // justifyContent: 'center'
+        borderRadius: 20,
     },
     BannerImage: {
         width: 68,
         height: 68
     },
-    bannerMainContainer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', flex: 1 },
-    bannerText: { fontSize: 20, color: 'white' },
-    RecommandTextCon: { margin: 15 },
-    RecommandText: { fontSize: 30, fontWeight: '400', lineHeight: 38, color: 'black' },
-    productContainer: { flex: 1, alignItems: 'center' },
-    productMainContainer: { alignItems: 'center', justifyContent: 'space-around', width: 160, height: 194, backgroundColor: 'rgba(248, 249, 251, 1)', marginBottom: 10, borderRadius: 12 },
-    productImage: { width: 68, height: 68, tintColor: 'grey' },
-    productPrice: { color: 'black', fontWeight: '600', fontSize: 14 },
-    addIcon: { backgroundColor: colors.blue, borderRadius: 20, width: 24, height: 24, alignItems: 'center', marginLeft: 10 }
+    RecommandTextCon: {
+        margin: 15
+    },
+    RecommandText: {
+        fontSize: 30,
+        fontWeight: '400',
+        lineHeight: 38,
+        color: 'black'
+    },
 });
 
 export default styles;
