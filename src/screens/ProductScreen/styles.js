@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { colors } from '../../utils/colors';
+import {StyleSheet} from 'react-native';
+import {colors} from '../../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -43,7 +43,31 @@ const styles = StyleSheet.create({
   },
   sliderContainer: {
     flex: 1,
-    borderWidth: 1,
+  },
+  notification: {
+    backgroundColor: '#F9B023',
+    textAlign: 'center',
+    borderRadius: 20,
+    width: 20,
+    height: 20,
+    zIndex: 5,
+    position: 'absolute',
+    bottom: 10,
+    left: 5,
+  },
+  category: {
+    fontSize: 50,
+    color: 'black',
+    lineHeight: 62,
+    marginHorizontal: 20,
+    fontWeight: '300',
+  },
+  brand: {
+    fontWeight: 'bold',
+    fontSize: 50,
+    color: 'black',
+    lineHeight: 62,
+    marginHorizontal: 20,
   },
   favButton: {
     position: 'absolute',
